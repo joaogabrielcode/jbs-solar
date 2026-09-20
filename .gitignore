@@ -1,0 +1,16 @@
+# Referencias e documentacao de planejamento locais
+/refs/
+/PRD.md
+/design_system/
+
+# Skills e configuracoes locais de agentes
+.agents/
+.codex/
+.claude/
+skills/
+SKILL.md
+AGENTS.md
+CLAUDE.md
+
+# Metadados do Windows
+*:Zone.Identifier
