@@ -34,6 +34,33 @@
     });
   }
 
+  const quoteForm = document.querySelector('[data-quote-form]');
+  if (quoteForm) {
+    const feedback = quoteForm.querySelector('[data-form-feedback]');
+    quoteForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!quoteForm.reportValidity()) return;
+
+      const formData = new FormData(quoteForm);
+      const observation = String(formData.get('message') || '').trim();
+      const lines = [
+        'Olá, JBS Solar! Gostaria de solicitar um orçamento.',
+        '',
+        `Nome: ${String(formData.get('name')).trim()}`,
+        `WhatsApp: ${String(formData.get('whatsapp')).trim()}`,
+        `Cidade: ${String(formData.get('city')).trim()}`,
+        `Tipo de cliente: ${String(formData.get('clientType')).trim()}`,
+        `Serviço de interesse: ${String(formData.get('service')).trim()}`,
+        `Valor médio da conta: ${String(formData.get('energyBill')).trim()}`,
+      ];
+      if (observation) lines.push(`Observação: ${observation}`);
+
+      const whatsappUrl = `https://wa.me/558481479896?text=${encodeURIComponent(lines.join('\n'))}`;
+      const whatsappWindow = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+      if (!whatsappWindow && feedback) feedback.textContent = 'Permita pop-ups para abrir o WhatsApp.';
+    });
+  }
+
   const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
   const services = [...document.querySelectorAll('[data-service-item]')].map((item) => {
     // Native grouping remains available without JavaScript. Enhanced grouping

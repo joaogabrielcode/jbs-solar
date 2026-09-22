@@ -217,15 +217,19 @@
     <section id="orcamento" class="section contact-section" aria-labelledby="orcamento-titulo">
       <div class="contact-sun" aria-hidden="true"></div>
       <div class="shell contact-grid">
-        <div class="contact-copy reveal"><p class="eyebrow eyebrow--light"><span></span> Solicitação de orçamento</p><h2 id="orcamento-titulo">Conte o que você precisa. <em>A gente orienta o caminho.</em></h2><p id="orcamento-status">Em breve, você poderá solicitar seu orçamento por aqui. O envio ainda não está disponível.</p></div>
-        <!-- Estrutura inicial: habilitar os campos quando o envio estiver implementado. -->
-        <form class="quote-form reveal" aria-label="Solicitação de orçamento" aria-describedby="orcamento-status">
-          <fieldset disabled>
-            <legend class="field-wide">Solicitar orçamento — em breve</legend>
-            <label><span>Seu nome</span><input name="name" autocomplete="name" placeholder="Como podemos chamar você?"></label>
-            <label><span>WhatsApp ou e-mail</span><input name="contact" placeholder="Seu melhor contato"></label>
-            <label class="field-wide"><span>Como podemos ajudar?</span><textarea name="message" rows="3" placeholder="Conte brevemente sobre o seu projeto"></textarea></label>
-            <button class="button button--sun field-wide" type="button" disabled>Solicitar orçamento <span aria-hidden="true">↗</span></button>
+        <div class="contact-copy reveal"><p class="eyebrow eyebrow--light"><span></span> Solicitação de orçamento</p><h2 id="orcamento-titulo">Conte o que você precisa. <em>A gente orienta o caminho.</em></h2><p id="orcamento-status">Preencha os dados para enviar sua solicitação diretamente pelo WhatsApp.</p></div>
+        <form class="quote-form reveal" aria-label="Solicitação de orçamento" aria-describedby="orcamento-status" data-quote-form>
+          <fieldset>
+            <legend class="field-wide">Solicitar orçamento</legend>
+            <label><span>Nome completo *</span><input name="name" autocomplete="name" required placeholder="Como podemos chamar você?"></label>
+            <label><span>WhatsApp *</span><input name="whatsapp" type="tel" autocomplete="tel" required placeholder="(84) 99999-9999"></label>
+            <label><span>Cidade *</span><input name="city" autocomplete="address-level2" required placeholder="Sua cidade"></label>
+            <label><span>Tipo de cliente *</span><select name="clientType" required><option value="" selected disabled>Selecione uma opção</option><option>Residencial</option><option>Comercial</option><option>Rural</option><option>Investimento</option><option>Outro</option></select></label>
+            <label class="field-wide"><span>Serviço de interesse *</span><select name="service" required><option value="" selected disabled>Selecione uma opção</option><option>Energia Solar / Projeto Fotovoltaico</option><option>Manutenção</option><option>Monitoramento de usina solar</option><option>Usina Solar de Investimento</option><option>Energia Solar por Assinatura</option><option>Carregador de carro elétrico</option><option>Sistema de bombeamento</option><option>Solicitações Cosern</option><option>Outro</option></select></label>
+            <label class="field-wide"><span>Valor médio da conta de energia *</span><input name="energyBill" required placeholder="Ex.: R$ 450,00"></label>
+            <label class="field-wide"><span>Mensagem / observação</span><textarea name="message" rows="3" placeholder="Conte algo que possa ajudar no atendimento (opcional)"></textarea></label>
+            <button class="button button--sun field-wide" type="submit">Solicitar orçamento <span aria-hidden="true">↗</span></button>
+            <p class="form-feedback field-wide" data-form-feedback role="status" aria-live="polite"></p>
           </fieldset>
         </form>
       </div>
