@@ -37,6 +37,10 @@
   const quoteForm = document.querySelector('[data-quote-form]');
   if (quoteForm) {
     const feedback = quoteForm.querySelector('[data-form-feedback]');
+    quoteForm.addEventListener('invalid', (event) => event.target.setAttribute('aria-invalid', 'true'), true);
+    quoteForm.addEventListener('input', (event) => {
+      if (event.target.checkValidity()) event.target.removeAttribute('aria-invalid');
+    });
     quoteForm.addEventListener('submit', (event) => {
       event.preventDefault();
       if (!quoteForm.reportValidity()) return;
@@ -108,6 +112,56 @@
   openLinkedService();
   window.addEventListener('hashchange', openLinkedService);
 
+  const accordionItems = [...document.querySelectorAll('.accordion details')];
+  const setAccordionExpanded = (item, expanded) => {
+    const summary = item.querySelector('summary');
+    const content = item.querySelector('p');
+    if (!summary || !content) return;
+    if (item._motion) item._motion.cancel();
+    summary.setAttribute('aria-expanded', String(expanded));
+    if (motionPreference.matches || !item.animate) {
+      item.open = expanded;
+      content.style.removeProperty('opacity');
+      content.style.removeProperty('overflow');
+      item.style.removeProperty('height');
+      item.style.removeProperty('overflow');
+      return;
+    }
+
+    const startHeight = item.getBoundingClientRect().height;
+    item.open = true;
+    const endHeight = expanded ? item.getBoundingClientRect().height : summary.getBoundingClientRect().height;
+    item.style.overflow = 'hidden';
+    content.style.overflow = 'hidden';
+    const heightMotion = item.animate([
+      { height: `${startHeight}px` },
+      { height: `${endHeight}px` },
+    ], { duration: 260, easing: 'cubic-bezier(.2, .7, .2, 1)' });
+    const contentMotion = content.animate([
+      { opacity: expanded ? 0 : 1 },
+      { opacity: expanded ? 1 : 0 },
+    ], { duration: 190, easing: 'ease-out' });
+    item._motion = heightMotion;
+    heightMotion.onfinish = () => {
+      item.open = expanded;
+      item.style.removeProperty('height');
+      item.style.removeProperty('overflow');
+      content.style.removeProperty('opacity');
+      content.style.removeProperty('overflow');
+      item._motion = null;
+    };
+    contentMotion.onfinish = () => contentMotion.cancel();
+  };
+
+  accordionItems.forEach((item) => {
+    const summary = item.querySelector('summary');
+    summary?.setAttribute('aria-expanded', String(item.open));
+    summary?.addEventListener('click', (event) => {
+      event.preventDefault();
+      setAccordionExpanded(item, !item.open);
+    });
+  });
+
   const reveals = document.querySelectorAll('.reveal');
   if (motionPreference.matches || !('IntersectionObserver' in window)) {
     reveals.forEach((element) => element.classList.add('is-visible'));
@@ -117,7 +171,7 @@
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         if (entry.target.matches('[data-service-item]')) {
-          entry.target.style.setProperty('--reveal-delay', `${Math.min(serviceIndex++, 3) * 60}ms`);
+          entry.target.style.setProperty('--reveal-delay', `${Math.min(serviceIndex++, 6) * 70}ms`);
         }
         entry.target.classList.add('is-visible');
         observer.unobserve(entry.target);
