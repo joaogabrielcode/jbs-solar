@@ -84,7 +84,7 @@
     const number = item.querySelector('.service-number');
     const content = item.querySelector('.service-content');
     if (!title || !number || !content) return;
-    dialogTitle.textContent = title.textContent;
+    dialogTitle.textContent = item.dataset.serviceModalTitle || title.textContent;
     dialogNumber.textContent = number.textContent;
     dialogContent.innerHTML = content.innerHTML;
     lastServiceTrigger = trigger;
@@ -184,6 +184,175 @@
     if (!motionPreference.matches) return;
     reveals.forEach((element) => element.classList.add('is-visible'));
   });
+
+  const presenceMapElement = document.querySelector('[data-map-status]')?.closest('.presence-section')?.querySelector('#presence-map');
+  const presenceStatus = document.querySelector('[data-map-status]');
+  const presenceFilters = [...document.querySelectorAll('[data-map-filter]')];
+  const presenceLocations = [
+    { name: 'Macau', type: 'filial', lat: -5.115, lng: -36.635, hasProjects: true, address: '', mapsUrl: '' },
+    { name: 'Guamaré', type: 'projeto', lat: -5.109, lng: -36.322, hasProjects: true, address: '', mapsUrl: '' },
+    { name: 'Pendências', type: 'filial', lat: -5.260, lng: -36.722, hasProjects: true, address: '', mapsUrl: '' },
+    { name: 'Alto do Rodrigues', type: 'filial', lat: -5.288, lng: -36.763, hasProjects: true, address: '', mapsUrl: '' },
+    { name: 'Carnaubais', type: 'projeto', lat: -5.347, lng: -36.839, hasProjects: true, address: '', mapsUrl: '' },
+    { name: 'Ipanguaçu', type: 'projeto', lat: -5.498, lng: -36.855, hasProjects: true, address: '', mapsUrl: '' },
+    { name: 'Assú', type: 'projeto', lat: -5.577, lng: -36.915, hasProjects: true, address: '', mapsUrl: '' },
+    { name: 'Itajá', type: 'projeto', lat: -5.638, lng: -36.871, hasProjects: true, address: '', mapsUrl: '' },
+    { name: 'Diogo Lopes', type: 'projeto', lat: -5.087, lng: -36.393, hasProjects: true, address: '', mapsUrl: '' },
+    { name: 'São Miguel do Gostoso', type: 'filial', lat: -5.946, lng: -35.576, hasProjects: true, address: '', mapsUrl: '' },
+  ];
+
+  const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (character) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;',
+  }[character]));
+
+  const popupMarkup = (location) => {
+    if (location.type === 'filial') {
+      const unitName = location.name === 'Macau' ? 'Sede JBS Solar' : 'Unidade JBS Solar';
+      const address = location.address ? `<p class="presence-popup__address">${escapeHtml(location.address)}</p>` : '';
+      const directions = location.mapsUrl ? `<a class="presence-popup__link" href="${escapeHtml(location.mapsUrl)}" target="_blank" rel="noopener noreferrer">Como chegar ↗</a>` : '';
+      return `<p class="presence-popup__eyebrow">Filial</p><h3 class="presence-popup__title">${escapeHtml(location.name)}</h3><p class="presence-popup__text">${unitName}</p>${address}${directions}`;
+    }
+    return `<p class="presence-popup__eyebrow">Projeto / atuação</p><h3 class="presence-popup__title">${escapeHtml(location.name)}</h3><p class="presence-popup__text">Atuação da JBS Solar nesta região.</p>`;
+  };
+
+  const listLocations = (kind) => presenceLocations.filter((location) => kind === 'filiais' ? location.type === 'filial' : location.hasProjects);
+  document.querySelectorAll('[data-location-list]').forEach((list) => {
+    const kind = list.dataset.locationList;
+    list.innerHTML = listLocations(kind).map((location) => `<li><button type="button" data-location-name="${escapeHtml(location.name)}">${escapeHtml(location.name)}</button></li>`).join('');
+  });
+
+  if (presenceMapElement && window.maplibregl) {
+    const presenceMap = new maplibregl.Map({
+      container: presenceMapElement,
+      style: 'https://tiles.openfreemap.org/styles/liberty',
+      center: [-36.45, -5.5],
+      zoom: 7.8,
+      minZoom: 6,
+      attributionControl: true,
+    });
+    let activePresenceFilter = 'todos';
+
+    presenceMap.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
+    presenceMap.on('error', () => {
+      if (presenceStatus) presenceStatus.textContent = 'Não foi possível carregar o mapa agora. Tente atualizar a página.';
+    });
+
+    const visibleLocations = () => presenceLocations.filter((location) => {
+      if (activePresenceFilter === 'filiais') return location.type === 'filial';
+      if (activePresenceFilter === 'projetos') return location.hasProjects;
+      return true;
+    });
+
+    const locationByName = (name) => presenceLocations.find((location) => location.name === name);
+    const locationsGeoJson = () => ({
+      type: 'FeatureCollection',
+      features: visibleLocations().map((location) => ({
+        type: 'Feature',
+        geometry: { type: 'Point', coordinates: [location.lng, location.lat] },
+        properties: { name: location.name, type: location.type },
+      })),
+    });
+
+    const hideGenericCityLabels = () => {
+      presenceMap.getStyle()?.layers?.forEach((layer) => {
+        if (layer.type === 'symbol' && layer['source-layer'] === 'place' && layer.layout?.['text-field']) {
+          presenceMap.setLayoutProperty(layer.id, 'visibility', 'none');
+        }
+      });
+    };
+
+    const renderPresenceMarkers = () => {
+      presenceMap.getSource('presence-locations')?.setData(locationsGeoJson());
+    };
+
+    const selectPresenceLocation = (locationName) => {
+      const location = locationByName(locationName);
+      if (!location) return;
+      presenceMap.flyTo({ center: [location.lng, location.lat], zoom: Math.max(presenceMap.getZoom(), 9.6), speed: .8, curve: 1.25, essential: true });
+      presenceMap.once('moveend', () => {
+        new maplibregl.Popup({ offset: 14, closeButton: true, closeOnClick: false, className: 'presence-popup' })
+          .setLngLat([location.lng, location.lat])
+          .setHTML(popupMarkup(location))
+          .addTo(presenceMap);
+      });
+    };
+
+    presenceFilters.forEach((filterButton) => {
+      filterButton.addEventListener('click', () => {
+        activePresenceFilter = filterButton.dataset.mapFilter;
+        presenceFilters.forEach((button) => {
+          const isActive = button === filterButton;
+          button.classList.toggle('is-active', isActive);
+          button.setAttribute('aria-pressed', String(isActive));
+        });
+        if (presenceStatus) presenceStatus.textContent = activePresenceFilter === 'filiais' ? 'Exibindo as unidades da JBS Solar.' : activePresenceFilter === 'projetos' ? 'Exibindo cidades com projetos e atuação.' : 'Arraste, aproxime e selecione uma cidade.';
+        renderPresenceMarkers();
+      });
+    });
+
+    document.querySelectorAll('[data-location-name]').forEach((button) => button.addEventListener('click', () => {
+      const locationName = button.dataset.locationName;
+      const selectedLocation = presenceLocations.find((location) => location.name === locationName);
+      if (selectedLocation && activePresenceFilter !== 'todos' && !visibleLocations().includes(selectedLocation)) {
+        const allFilter = presenceFilters.find((filter) => filter.dataset.mapFilter === 'todos');
+        allFilter?.click();
+      }
+      selectPresenceLocation(locationName);
+    }));
+
+    presenceMap.on('load', () => {
+      hideGenericCityLabels();
+      presenceMap.addSource('presence-locations', { type: 'geojson', data: locationsGeoJson() });
+      presenceMap.addLayer({
+        id: 'presence-location-points',
+        type: 'circle',
+        source: 'presence-locations',
+        paint: {
+          'circle-color': ['match', ['get', 'type'], 'filial', '#ff5b16', '#58c7e7'],
+          'circle-radius': ['match', ['get', 'type'], 'filial', 10, 7],
+          'circle-stroke-color': 'rgba(255,255,255,.94)',
+          'circle-stroke-width': 3,
+          'circle-opacity': .98,
+        },
+      });
+      presenceMap.addLayer({
+        id: 'presence-location-labels',
+        type: 'symbol',
+        source: 'presence-locations',
+        layout: {
+          'text-field': ['get', 'name'],
+          'text-size': 11,
+          'text-font': ['Open Sans Regular'],
+          'text-offset': [0, 1.7],
+          'text-anchor': 'top',
+          'text-allow-overlap': true,
+        },
+        paint: {
+          'text-color': '#052b4f',
+          'text-halo-color': 'rgba(255,255,255,.94)',
+          'text-halo-width': 1.4,
+        },
+      });
+      presenceMap.on('click', 'presence-location-points', (event) => {
+        const feature = event.features?.[0];
+        const location = feature ? locationByName(feature.properties.name) : null;
+        if (!location) return;
+        presenceMap.flyTo({ center: [location.lng, location.lat], zoom: Math.max(presenceMap.getZoom(), 9.6), speed: .8, curve: 1.25, essential: true });
+        new maplibregl.Popup({ offset: 14, closeButton: true, closeOnClick: false, className: 'presence-popup' })
+          .setLngLat([location.lng, location.lat])
+          .setHTML(popupMarkup(location))
+          .addTo(presenceMap);
+      });
+      presenceMap.on('mouseenter', 'presence-location-points', () => { presenceMap.getCanvas().style.cursor = 'pointer'; });
+      presenceMap.on('mouseleave', 'presence-location-points', () => { presenceMap.getCanvas().style.cursor = ''; });
+      presenceMap.fitBounds([[-37.08, -6.12], [-35.35, -4.88]], { padding: 42, duration: 0, maxZoom: 8.4 });
+      requestAnimationFrame(() => presenceMap.resize());
+    });
+    window.addEventListener('resize', () => presenceMap.resize(), { passive: true });
+    if ('ResizeObserver' in window) new ResizeObserver(() => presenceMap.resize()).observe(presenceMapElement);
+  } else if (presenceStatus) {
+    presenceStatus.textContent = 'O mapa não pôde ser carregado agora.';
+  }
 
   const year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();

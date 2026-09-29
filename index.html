@@ -15,6 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.12.0/dist/maplibre-gl.css">
   <link rel="stylesheet" href="css/style.css">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Organization","name":"JBS Solar","logo":"img/brand/logo-jbs-solar.png"}
@@ -29,12 +30,13 @@
         <img src="img/brand/logo-jbs-solar.png" alt="JBS Solar" width="1024" height="1024">
       </a>
       <nav id="menu-principal" class="main-nav" aria-label="Navegação principal" data-nav>
+        <a href="#presenca-rn">Presença no RN</a>
         <a href="#empresa">Por que escolher a JBS?</a>
-        <a href="#processo">Como funciona</a>
+        <a href="#video-institucional">Conheça a JBS Solar</a>
         <a href="#solucoes">Serviços</a>
         <a href="#orcamento">Orçamento</a>
         <a href="#faq">FAQ</a>
-        <a href="#loja">Loja JBS</a>
+        <a href="#cta-final">Contato</a>
         <a class="nav-instagram" href="https://www.instagram.com/jbssolar/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg><span>@jbssolar</span></a>
       </nav>
       <a class="header-instagram" href="https://www.instagram.com/jbssolar/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da JBS Solar"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg><span>@jbssolar</span></a>
@@ -51,8 +53,8 @@
       <div class="shell hero-grid">
         <div class="hero-copy reveal">
           <div class="hero-message">
-            <h1>Energia solar com <em>retorno financeiro.</em></h1>
-            <p class="hero-lead">Projeto, instalação e suporte para você aproveitar a energia solar.</p>
+            <h1>Qualidade e segurança <em>em cada projeto.</em></h1>
+            <p class="hero-lead">Projeto, instalação e suporte técnico com acompanhamento em todas as etapas.</p>
           </div>
           <div class="hero-actions">
             <a class="button button--sun" href="#orcamento">Solicite seu orçamento <span aria-hidden="true">↗</span></a>
@@ -68,6 +70,45 @@
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <section id="presenca-rn" class="section section--mist presence-section" aria-labelledby="presenca-rn-titulo">
+      <div class="shell">
+        <div class="section-heading presence-heading reveal">
+          <div>
+            <p class="eyebrow"><span></span> Presença no RN</p>
+            <h2 id="presenca-rn-titulo">Energia solar mais <em>perto de você.</em></h2>
+          </div>
+          <p>A JBS Solar possui unidades em diferentes regiões do Rio Grande do Norte e atua com projetos em diversas cidades.</p>
+        </div>
+
+        <div class="presence-toolbar reveal" aria-label="Filtros do mapa">
+          <span class="presence-toolbar__label">Visualizar</span>
+          <div class="presence-filters" role="group" aria-label="Filtrar pontos no mapa">
+            <button class="presence-filter is-active" type="button" data-map-filter="todos" aria-pressed="true">Todas</button>
+            <button class="presence-filter" type="button" data-map-filter="filiais" aria-pressed="false">Filiais</button>
+            <button class="presence-filter" type="button" data-map-filter="projetos" aria-pressed="false">Projetos</button>
+          </div>
+          <p class="presence-map-status" data-map-status role="status" aria-live="polite">Arraste, aproxime e selecione uma cidade.</p>
+        </div>
+
+        <div class="presence-layout">
+          <div class="presence-map-wrap reveal">
+            <div id="presence-map" class="presence-map" aria-label="Mapa da presença da JBS Solar no Rio Grande do Norte"></div>
+          </div>
+
+          <aside class="presence-info reveal" aria-label="Unidades e cidades atendidas">
+            <div class="presence-info-block">
+              <div class="presence-info-heading"><span class="presence-legend presence-legend--branch" aria-hidden="true"></span><h3>Filiais</h3></div>
+              <ul class="presence-city-list" data-location-list="filiais"></ul>
+            </div>
+            <div class="presence-info-block">
+              <div class="presence-info-heading"><span class="presence-legend presence-legend--project" aria-hidden="true"></span><h3>Cidades com projetos/atuação</h3></div>
+              <ul class="presence-city-list" data-location-list="projetos"></ul>
+            </div>
+          </aside>
+        </div>
       </div>
     </section>
 
@@ -111,7 +152,6 @@
           </article>
         </div>
 
-        <div class="differential-proof reveal" aria-label="Números e presença da JBS Solar"><span><strong>Mais de 600</strong> projetos realizados</span><i aria-hidden="true">·</i><span><strong>8 anos</strong> no mercado</span><i aria-hidden="true">·</i><span><strong>4 unidades</strong> no RN</span><span class="differential-locations">Macau <i aria-hidden="true">•</i> Pendências <i aria-hidden="true">•</i> Alto do Rodrigues <i aria-hidden="true">•</i> São Miguel do Gostoso</span></div>
       </div>
     </section>
 
@@ -187,24 +227,24 @@
             <div class="service-card-head">
               <div class="service-card-top"><span class="service-number" aria-hidden="true">05</span><span class="service-card-icon" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M18 4 8 18h8l-2 10 10-14h-8z"/></svg></span></div>
               <h3 class="service-title" id="titulo-servico-carregador">Carregador de carro elétrico</h3>
-              <p class="service-description">Serviço apresentado pela JBS Solar. Consulte a equipe para confirmar os detalhes.</p>
+              <p class="service-description">Instalação de soluções para recarga de veículos elétricos, com opção de utilizar equipamentos do cliente ou contratar a solução completa.</p>
               <button class="service-action" type="button" data-service-open aria-controls="service-dialog-content">Ver detalhes <span aria-hidden="true">↗</span></button>
             </div>
             <div id="conteudo-servico-carregador" class="service-content">
-              <p>A JBS Solar apresenta carregador de carro elétrico entre seus serviços.</p><p>Os detalhes deste serviço ainda precisam ser confirmados com a JBS Solar.</p>
-              <a class="button button--blue" href="#orcamento">Solicitar orçamento <span aria-hidden="true">↗</span></a>
+              <p>A JBS Solar realiza a instalação de sistemas de recarga para veículos elétricos, oferecendo uma solução segura e organizada para residências, empresas e outros locais que desejam contar com um ponto de carregamento.</p><p>O serviço pode ser realizado de duas formas: caso o cliente já possua o carregador e os equipamentos necessários, a JBS pode executar a instalação e colocar o sistema em funcionamento. Para quem ainda não possui os equipamentos, a JBS também pode fornecer a solução completa, incluindo os equipamentos necessários, instalação e entrega do sistema pronto para uso.</p><h4>O que está incluso</h4><ul><li>Instalação do carregador veicular</li><li>Utilização de equipamento já adquirido pelo cliente</li><li>Fornecimento dos equipamentos pela JBS</li><li>Instalação completa do sistema</li><li>Configuração e entrega em funcionamento</li></ul>
+              <a class="button button--blue" href="https://wa.me/558481479896?text=Ol%C3%A1%2C%20JBS%20Solar%21%20Gostaria%20de%20solicitar%20uma%20avalia%C3%A7%C3%A3o%20para%20carregador%20veicular." target="_blank" rel="noopener noreferrer">Solicitar avaliação para carregador veicular <span aria-hidden="true">↗</span></a>
             </div>
           </article>
-          <article id="servico-bombeamento" class="service-item reveal" data-service-item>
+          <article id="servico-bombeamento" class="service-item reveal" data-service-item data-service-modal-title="Sistema de bombeamento solar">
             <div class="service-card-head">
               <div class="service-card-top"><span class="service-number" aria-hidden="true">06</span><span class="service-card-icon" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M16 27V8M10 14l6-6 6 6M8 27h16"/></svg></span></div>
               <h3 class="service-title" id="titulo-servico-bombeamento">Sistema de bombeamento</h3>
-              <p class="service-description">Serviço apresentado pela JBS Solar. Consulte a equipe para confirmar os detalhes.</p>
+              <p class="service-description">Instalação de sistemas de bombeamento com energia solar, utilizando equipamentos do cliente ou uma solução completa fornecida pela JBS.</p>
               <button class="service-action" type="button" data-service-open aria-controls="service-dialog-content">Ver detalhes <span aria-hidden="true">↗</span></button>
             </div>
             <div id="conteudo-servico-bombeamento" class="service-content">
-              <p>A JBS Solar apresenta sistema de bombeamento entre seus serviços.</p><p>Os detalhes deste serviço ainda precisam ser confirmados com a JBS Solar.</p>
-              <a class="button button--blue" href="#orcamento">Solicitar orçamento <span aria-hidden="true">↗</span></a>
+              <p>A JBS Solar trabalha com soluções de bombeamento utilizando energia solar, indicadas para situações em que é necessário realizar a captação ou movimentação de água com uma solução energética eficiente e independente.</p><p>Caso o cliente já possua os equipamentos do sistema, a JBS pode realizar a instalação e colocar a solução em funcionamento. Para quem ainda não possui os equipamentos, a empresa também pode fornecer o conjunto necessário, realizar toda a instalação e entregar o sistema pronto para operar.</p><h4>O que está incluso</h4><ul><li>Instalação de sistema de bombeamento solar</li><li>Instalação de equipamentos já adquiridos pelo cliente</li><li>Fornecimento dos equipamentos necessários pela JBS</li><li>Montagem e integração do sistema</li><li>Entrega da solução pronta para funcionamento</li></ul>
+              <a class="button button--blue" href="https://wa.me/558481479896?text=Ol%C3%A1%2C%20JBS%20Solar%21%20Gostaria%20de%20solicitar%20uma%20avalia%C3%A7%C3%A3o%20para%20bombeamento%20solar." target="_blank" rel="noopener noreferrer">Solicitar avaliação para bombeamento solar <span aria-hidden="true">↗</span></a>
             </div>
           </article>
           <article id="servico-cosern" class="service-item reveal" data-service-item>
@@ -231,20 +271,6 @@
         </dialog>
       </div>
     </section>
-
-    <section id="loja" class="section section--paper" aria-labelledby="loja-titulo">
-      <div class="shell">
-        <div class="section-heading reveal"><div><p class="eyebrow"><span></span> Loja JBS</p><h2 id="loja-titulo">Um novo espaço <em>em breve.</em></h2></div><p>A loja da JBS Solar está em preparação.</p></div>
-        <div class="placeholder-panel reveal">
-          <h3>Loja JBS</h3>
-          <p id="loja-status">Em breve, você poderá acessar a loja por aqui.</p>
-          <!-- Adicionar o endereço oficial somente após validação. -->
-          <button class="button button--blue" type="button" disabled aria-describedby="loja-status">Acessar loja <span aria-hidden="true">↗</span></button>
-        </div>
-      </div>
-    </section>
-
-    <section id="processo" class="section process-section"><div class="process-orbit" aria-hidden="true"></div><div class="shell"><div class="section-heading section-heading--dark reveal"><div><p class="eyebrow eyebrow--light"><span></span> Como funciona</p><h2>Um processo que você consegue <em>acompanhar.</em></h2></div><p>Cada etapa existe para reduzir incertezas e deixar claro o que vem depois.</p></div><ol class="process-list"><li class="reveal"><span>01</span><h3>Conversa inicial</h3><p>Você compartilha seu cenário e o que precisa resolver.</p></li><li class="reveal"><span>02</span><h3>Projeto e proposta</h3><p>A equipe organiza a solução e apresenta os próximos passos.</p></li><li class="reveal"><span>03</span><h3>Instalação</h3><p>A execução segue o projeto definido e aprovado.</p></li><li class="reveal"><span>04</span><h3>Acompanhamento</h3><p>Monitoramento e suporte ajudam a cuidar da operação.</p></li></ol><a class="button button--sun process-cta" href="#orcamento">Começar meu projeto <span aria-hidden="true">↗</span></a></div></section>
 
     <section id="orcamento" class="section contact-section" aria-labelledby="orcamento-titulo">
       <div class="contact-sun" aria-hidden="true"></div>
@@ -286,17 +312,13 @@
             <a class="instagram-link" href="https://www.instagram.com/jbssolar/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg><span>Ver no Instagram</span></a>
           </div>
         </div>
-        <ul class="final-contact__support" aria-label="Informações sobre o atendimento">
-          <li><span aria-hidden="true">01</span><strong>Atendimento pelo WhatsApp</strong></li>
-          <li><span aria-hidden="true">02</span><strong>Dúvidas sobre serviços e projetos</strong></li>
-          <li><span aria-hidden="true">03</span><strong>Orientação antes de solicitar orçamento</strong></li>
-        </ul>
       </div>
     </section>
   </main>
 
 
-  <footer class="site-footer"><div class="shell footer-grid"><div class="footer-brand"><a class="brand brand--footer" href="#inicio" aria-label="JBS Solar — início"><img src="img/brand/logo-jbs-solar.png" alt="JBS Solar" width="1024" height="1024"></a><p>Energia solar com projeto, instalação e suporte técnico.</p></div><div class="footer-nav"><p class="footer-label">Navegação</p><a href="#empresa">Por que escolher a JBS?</a><a href="#processo">Como funciona</a><a href="#solucoes">Serviços</a><a href="#orcamento">Orçamento</a><a href="#faq">FAQ</a><a href="#loja">Loja JBS</a></div><div class="footer-nav"><p class="footer-label">Serviços</p><a href="#servico-manutencao">Manutenção</a><a href="#servico-monitoramento">Monitoramento de usina solar</a><a href="#servico-investimento">Usina Solar de Investimento</a><a href="#servico-assinatura">Energia Solar por Assinatura</a><a href="#servico-carregador">Carregador de carro elétrico</a><a href="#servico-bombeamento">Sistema de bombeamento</a><a href="#servico-cosern">Solicitações Cosern</a></div><div class="footer-action"><p class="footer-label">Vamos conversar?</p><p>Confirme o atendimento para a sua região.</p><a class="button button--outline-light" href="#orcamento">Solicitar contato <span aria-hidden="true">↗</span></a><a class="footer-instagram" href="https://www.instagram.com/jbssolar/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg><span>@jbssolar</span></a></div></div><div class="shell footer-bottom"><span>© <span data-year></span> JBS Solar</span><span>Qualidade • Energia • Segurança</span></div></footer>
+  <footer class="site-footer"><div class="shell footer-grid"><div class="footer-brand"><a class="brand brand--footer" href="#inicio" aria-label="JBS Solar — início"><img src="img/brand/logo-jbs-solar.png" alt="JBS Solar" width="1024" height="1024"></a><p>Energia solar com projeto, instalação e suporte técnico.</p></div><div class="footer-nav"><p class="footer-label">Navegação</p><a href="#empresa">Por que escolher a JBS?</a><a href="#solucoes">Serviços</a><a href="#orcamento">Orçamento</a><a href="#faq">FAQ</a></div><div class="footer-nav"><p class="footer-label">Serviços</p><a href="#servico-manutencao">Manutenção</a><a href="#servico-monitoramento">Monitoramento de usina solar</a><a href="#servico-investimento">Usina Solar de Investimento</a><a href="#servico-assinatura">Energia Solar por Assinatura</a></div><div class="footer-action"><p class="footer-label">Contato</p><p>Confirme o atendimento para a sua região.</p><div class="footer-contact-links"><a class="footer-contact-link" href="https://wa.me/558481479896?text=Ol%C3%A1%21%20Estive%20no%20site%20da%20JBS%20Solar%20e%20fiquei%20com%20algumas%20d%C3%BAvidas.%20Gostaria%20de%20falar%20com%20a%20equipe." target="_blank" rel="noopener noreferrer">WhatsApp <span aria-hidden="true">↗</span></a><a class="footer-instagram" href="https://www.instagram.com/jbssolar/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg><span>@jbssolar</span></a></div></div></div><div class="shell footer-bottom"><span>© <span data-year></span> JBS Solar</span><span>Qualidade • Energia • Segurança</span></div></footer>
+  <script src="https://unpkg.com/maplibre-gl@5.12.0/dist/maplibre-gl.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>
