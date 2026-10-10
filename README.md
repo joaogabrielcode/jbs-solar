@@ -1,84 +1,65 @@
-# JBS Solar
+# JBS Solar | Projeto de frontend
 
-<img src="img/brand/logo-jbs-solar.png" alt="Logo da JBS Solar" width="120">
+Projeto do meu portfólio de desenvolvimento web: uma landing page responsiva construída com HTML, CSS e JavaScript para a JBS Solar. O repositório documenta a implementação da interface, as decisões de layout e as interações do site.
 
-> Qualidade e segurança em cada projeto.
->
-> Projeto, instalação e suporte técnico com acompanhamento em todas as etapas.
+[Ver demonstração](https://jbs-solar.vercel.app) · [Meu perfil no GitHub](https://github.com/joaogabrielcode)
 
-Este repositório contém a landing page institucional da JBS Solar. O site reúne a apresentação da empresa, sua presença no Rio Grande do Norte e os serviços relacionados à energia solar. A página conduz o visitante da descoberta das soluções ao primeiro contato com a equipe pelo WhatsApp.
+## Sobre o desenvolvimento
 
-[Conhecer o site](https://jbs-solar.vercel.app) · [Instagram](https://www.instagram.com/jbssolar/) · [Falar com a JBS Solar](https://wa.me/558481479896)
+O trabalho envolve transformar conteúdo institucional em uma página com navegação clara, identidade visual consistente e adaptação a diferentes tamanhos de tela. A implementação combina seções de conteúdo com recursos interativos: mapa, detalhes de serviços, vídeo, FAQ e formulário.
 
-## Proposta do projeto
+A referência visual da Loja JBS orientou os ajustes do header e sua relação com o hero. A navegação foi reorganizada em uma linha no desktop, com logo à esquerda, links na região central e redes sociais à direita. Durante a rolagem, a barra reduz de altura e destaca a seção atual.
 
-O projeto organiza as informações que um cliente precisa para entender o trabalho da JBS Solar antes de solicitar atendimento: quais serviços estão disponíveis, onde a empresa atua e como funciona o acompanhamento de um sistema fotovoltaico.
+O projeto também inclui revisão de espaçamentos, hierarquia tipográfica e comportamento no mobile. Os componentes usam a mesma paleta e os mesmos tokens de estilo para manter a interface consistente ao longo da página.
 
-A apresentação atende a diferentes interesses, como um projeto residencial, uma demanda comercial, bombeamento em uma propriedade rural ou uma usina de investimento. Quem já possui um sistema também encontra informações sobre manutenção, monitoramento e suporte técnico.
+## Funcionalidades implementadas
 
-O contato comercial ocupa um lugar central na página. As chamadas para orçamento levam a um formulário que reúne as informações iniciais do visitante e prepara uma mensagem para a equipe. O atendimento continua pelo WhatsApp.
+### Navegação responsiva
 
-## O que o visitante encontra
+O header permanece fixo e passa de 80 para 64 px após 100 px de rolagem. A mudança preserva o espaço reservado no documento para evitar deslocamentos do conteúdo. O item ativo acompanha a posição das seções e usa texto e linha inferior em laranja.
 
-A página segue uma sequência de apresentação da empresa e de seus serviços:
+No mobile, os links ficam em um menu hamburger. O menu pode ser fechado com Escape, mantém a navegação por teclado dentro dos controles disponíveis enquanto está aberto e é fechado ao retornar ao layout desktop. Os links de redes sociais continuam acessíveis no menu.
 
-1. Uma abertura com fotografia de painéis solares, a mensagem institucional e acesso direto ao orçamento. Também apresenta os números de projetos realizados e as unidades no RN.
-2. Um mapa interativo para explorar as localidades de atuação e identificar as unidades da empresa.
-3. Uma seção sobre a estrutura da JBS Solar, com informações sobre equipe própria, documentação dos projetos, monitoramento e pós-venda.
-4. Um vídeo institucional para conhecer a empresa.
-5. Um catálogo de serviços com descrições e detalhes de cada solução.
-6. O formulário de orçamento, seguido das perguntas frequentes e dos canais de contato.
+### Mapa interativo
 
-A navegação acompanha essa sequência. O header mantém logo, menu e contatos em uma linha no desktop; durante a rolagem, fica mais compacto e indica a seção atual em laranja. No celular, o menu é aberto pelo hamburger e reúne os links das seções e das redes sociais.
+O mapa usa MapLibre GL JS, com estilo do OpenFreeMap e dados do OpenStreetMap. As localidades são convertidas em GeoJSON para renderizar os pontos e seus rótulos.
 
-## Presença no Rio Grande do Norte
+A interface permite filtrar categorias, aproximar o mapa e selecionar um ponto pela lista ou pelo próprio marcador. A seleção centraliza a localidade e abre um popup. Os dados ficam em um array no JavaScript, separado da lógica de renderização, com campos para coordenadas, categoria e informações adicionais.
 
-O mapa apresenta unidades em Macau, Pendências, Alto do Rodrigues e São Miguel do Gostoso. Também inclui Guamaré, Carnaubais, Ipanguaçu, Assú, Itajá e Diogo Lopes entre as localidades com projetos ou atuação.
+As posições de São Miguel do Gostoso e Diogo Lopes foram corrigidas a partir de referências geográficas, registradas em comentários no código.
 
-O visitante pode aproximar o mapa, filtrar unidades e projetos ou escolher uma localidade pela lista. Ao selecionar um ponto, o mapa exibe as informações correspondentes. Os marcadores representam as localidades; os endereços exatos das unidades podem ser acrescentados aos dados do projeto.
+### Detalhes de serviços
 
-## Serviços apresentados
+Os sete serviços têm descrições resumidas e conteúdo detalhado em diálogos nativos de HTML. Ao fechar um diálogo, o foco retorna ao controle que o abriu. Links com o identificador de um serviço também podem abrir seus detalhes diretamente.
 
-| Serviço | Conteúdo disponível na página |
+O conteúdo permanece no HTML; o JavaScript controla a abertura e o preenchimento do diálogo compartilhado.
+
+### Formulário e FAQ
+
+O formulário usa validação nativa, campos obrigatórios e opções de seleção. Após a validação, o JavaScript organiza os dados em uma mensagem e prepara um link para abertura do WhatsApp. O envio é confirmado pelo usuário no aplicativo; os dados não são persistidos pelo site.
+
+O FAQ utiliza os elementos `details` e `summary`, com controle de abertura e animação que respeita a preferência por movimento reduzido. O vídeo institucional usa os controles nativos do navegador.
+
+## Decisões de interface
+
+A identidade visual usa navy como base, azul institucional, ciano e laranja para os destaques, com as fontes Manrope e Inter. Cores, espaçamentos e dimensões compartilhadas são definidos em variáveis CSS.
+
+O hero combina uma fotografia com overlay navy para manter a legibilidade do texto. A navegação e o conteúdo usam o mesmo container. No restante da página, divisórias e espaçamentos organizam as informações; os cards agrupam os serviços e seus controles de acesso aos detalhes.
+
+A implementação inclui link para pular ao conteúdo, nomes acessíveis nos controles, indicadores de foco e estados do menu comunicados por atributos ARIA. Os layouts foram conferidos em desktop e mobile, incluindo telas de 320 px, com atenção a transbordamento horizontal e sobreposição de elementos.
+
+## Tecnologias
+
+| Tecnologia | Aplicação no projeto |
 | --- | --- |
-| Manutenção | Manutenção preventiva e corretiva, inspeções e relatório de geração e eficiência |
-| Monitoramento de usina solar | Acompanhamento diário, alarmes e análise de consumo e geração |
-| Usina Solar de Investimento | Implantação de usina para comercialização de energia |
-| Energia Solar por Assinatura | Créditos de energia, contratação e condições da modalidade |
-| Carregador de carro elétrico | Instalação de recarga veicular com equipamento do cliente ou solução completa |
-| Sistema de bombeamento solar | Instalação e fornecimento de equipamentos para bombeamento com energia solar |
-| Solicitações Cosern | Serviços relacionados a titularidade, créditos, faturas e outros atendimentos |
+| HTML5 | Estrutura semântica, formulários, vídeo e diálogos |
+| CSS3 | Tokens de estilo, Flexbox, Grid e media queries |
+| JavaScript | Eventos, controle de estado dos componentes e manipulação do DOM |
+| MapLibre GL JS | Camadas GeoJSON, filtros, marcadores e navegação do mapa |
+| OpenFreeMap e OpenStreetMap | Estilo e dados cartográficos |
+| Google Fonts | Carregamento das fontes Manrope e Inter |
 
-Cada serviço possui um botão “Ver detalhes”, que abre seu conteúdo em um diálogo. Isso permite consultar as informações sem perder a posição na página. Os serviços também podem ser acessados por links diretos.
-
-## Solicitação de orçamento
-
-O formulário pede nome, WhatsApp, cidade, perfil do cliente, serviço de interesse e valor médio da conta de energia. Há um campo opcional para observações.
-
-Depois da validação, o site organiza essas informações em uma mensagem e abre o WhatsApp da JBS Solar. O visitante revisa a mensagem e confirma o envio no próprio aplicativo. O formulário não armazena os dados nem confirma o recebimento pela empresa.
-
-As perguntas frequentes explicam o primeiro contato, as informações necessárias para o atendimento e como consultar a disponibilidade na região do visitante.
-
-## Identidade visual
-
-A landing usa a identidade da JBS Solar para manter a apresentação institucional próxima da linguagem visual da Loja JBS. O fundo navy, os detalhes em ciano e laranja e a tipografia Manrope e Inter aparecem na navegação e nos principais pontos de contato da página.
-
-A fotografia de energia solar dá contexto à abertura, enquanto as seções organizam informações reais sobre a empresa e os serviços. O layout se adapta a desktop e celular, mantendo as ações de orçamento e contato acessíveis durante a navegação.
-
-O item “Loja JBS” está reservado no menu e identificado como “em breve”, aguardando a definição de sua URL pública.
-
-## Implementação
-
-O site foi desenvolvido com HTML, CSS e JavaScript. A estrutura é estática, com os conteúdos no HTML e as interações executadas no navegador.
-
-| Recurso | Implementação |
-| --- | --- |
-| Estrutura da página | HTML5, com seções semânticas, formulário, vídeo e diálogos |
-| Aparência e responsividade | CSS3, com tokens de cores e espaçamentos |
-| Interações | JavaScript para navegação, serviços, FAQ e orçamento |
-| Mapa | MapLibre GL JS, com estilo do OpenFreeMap e dados do OpenStreetMap |
-
-O projeto dispensa instalação de pacotes e etapa de build. As fontes são carregadas pelo Google Fonts, e o mapa depende de recursos externos. A navegação inclui controles de foco, fechamento por Escape e estilos que respeitam a preferência por movimento reduzido.
+A estrutura é estática e dispensa instalação de pacotes ou etapa de build. As fontes e os recursos cartográficos dependem de conexão com a internet.
 
 ## Executar localmente
 
@@ -90,30 +71,41 @@ cd jbs-solar
 python3 -m http.server 8000
 ```
 
-Abra [http://localhost:8000](http://localhost:8000). Para encerrar o servidor, pressione `Ctrl + C` no terminal.
+Abra [http://localhost:8000](http://localhost:8000). Encerre o servidor com `Ctrl + C` no terminal.
 
-## Organização dos arquivos
+## Estrutura do repositório
 
-| Arquivo ou pasta | Responsabilidade |
-| --- | --- |
-| `index.html` | Conteúdo institucional, serviços, formulário e links de contato |
-| `css/style.css` | Identidade visual, componentes e regras responsivas |
-| `js/main.js` | Interações da página e dados das localidades do mapa |
-| `img/brand/` | Logo, fotografia de painéis solares e vídeo institucional |
+```text
+jbs-solar/
+├── index.html
+├── css/
+│   └── style.css
+├── js/
+│   └── main.js
+├── img/
+│   └── brand/
+│       ├── logo-jbs-solar.png
+│       ├── painel-solar-image.png
+│       └── video.mp4
+├── .gitignore
+└── README.md
+```
 
-Os materiais locais em `docs/`, `refs/` e `design_system/` são referências de desenvolvimento e estão excluídos do versionamento. Quando disponível, `docs/jbs-servicos-base.md` é a referência para o conteúdo dos serviços.
+O HTML concentra a estrutura e os conteúdos. O CSS define os componentes e os layouts responsivos. O JavaScript reúne as interações e os dados usados pelo mapa.
 
-## Verificação e manutenção
+As pastas locais `docs/`, `refs/` e `design_system/` contêm materiais de referência e estão excluídas do versionamento pelo `.gitignore`.
 
-Para conferir a sintaxe do JavaScript e a formatação das alterações:
+## Verificação
 
 ```sh
 node --check js/main.js
 git diff --check
 ```
 
-Node.js é necessário apenas para a primeira verificação. O repositório não possui suíte de testes automatizados configurada.
+O comando de verificação de sintaxe requer Node.js. O repositório não possui suíte de testes automatizados configurada.
 
-Ao alterar a página, confira no navegador a navegação em desktop e mobile, os detalhes dos serviços, os filtros e marcadores do mapa, o vídeo, o FAQ e a mensagem preparada pelo formulário de orçamento.
+A revisão no navegador inclui header no topo e durante a rolagem, âncoras, menu mobile, navegação por teclado, diálogos dos serviços, filtros do mapa, popups, FAQ e validação do formulário. As verificações do mapa também conferem as coordenadas renderizadas e a centralização ao selecionar uma localidade.
 
-As localidades ficam no array `presenceLocations`, em `js/main.js`. Ao atualizar o número de atendimento, ajuste os links de WhatsApp no HTML e a variável `whatsappUrl` no JavaScript. Os arquivos podem ser publicados em uma hospedagem estática que preserve a estrutura de `css/`, `js/` e `img/`.
+## Estado atual
+
+O site tem navegação responsiva, mapa interativo e componentes funcionais. O item “Loja JBS” permanece desativado, identificado como “em breve”, até que sua URL seja definida. Os marcadores do mapa representam as localidades; os campos de endereço e rota estão disponíveis para inclusão de dados das unidades.
