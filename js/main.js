@@ -3,34 +3,71 @@
   const menuButton = document.querySelector('[data-menu-toggle]');
   const nav = document.querySelector('[data-nav]');
 
+  const sectionLinks = nav ? [...nav.querySelectorAll('a[href^="#"]')] : [];
+  const navSections = sectionLinks.map((link) => ({ link, section: document.querySelector(link.getAttribute('href')) })).filter(({ section }) => section);
+  let headerFrame = null;
+  const desktopHeader = window.matchMedia('(min-width: 961px)');
+  const headerContacts = header?.querySelector('.header-contacts');
+
   const updateHeader = () => {
-    if (header) header.classList.toggle('is-scrolled', window.scrollY > 24);
+    const compact = window.scrollY >= 100;
+    header?.classList.toggle('is-compact', compact);
+    document.documentElement.classList.toggle('header-compact', compact);
+    if (headerContacts) headerContacts.inert = !desktopHeader.matches;
   };
 
-  const closeMenu = () => {
+  const updateActiveLink = () => {
+    headerFrame = null;
+    const threshold = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) + 40;
+    const active = navSections.filter(({ section }) => section.getBoundingClientRect().top <= threshold)
+      .sort((a, b) => b.section.getBoundingClientRect().top - a.section.getBoundingClientRect().top)[0] || navSections[0];
+    sectionLinks.forEach((link) => {
+      if (link === active?.link) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  };
+
+  const closeMenu = (restoreFocus = false) => {
     if (!menuButton || !nav) return;
+    const wasOpen = menuButton.getAttribute('aria-expanded') === 'true';
     menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.setAttribute('aria-label', 'Abrir menu');
     nav.classList.remove('is-open');
     document.body.classList.remove('menu-open');
+    if (restoreFocus && wasOpen) menuButton.focus();
   };
 
   updateHeader();
-  window.addEventListener('scroll', updateHeader, { passive: true });
+  updateActiveLink();
+  const updateNavigation = () => { updateHeader(); updateActiveLink(); };
+  window.addEventListener('scroll', () => {
+    if (headerFrame === null) headerFrame = requestAnimationFrame(updateNavigation);
+  }, { passive: true });
+  window.addEventListener('resize', updateNavigation);
+  window.addEventListener('load', updateNavigation);
 
   if (menuButton && nav) {
     menuButton.addEventListener('click', () => {
       const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
       menuButton.setAttribute('aria-expanded', String(!isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Abrir menu' : 'Fechar menu');
       nav.classList.toggle('is-open', !isOpen);
       document.body.classList.toggle('menu-open', !isOpen);
     });
 
-    nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+    nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => closeMenu()));
     document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') closeMenu();
+      if (event.key === 'Escape') closeMenu(true);
+      if (event.key === 'Tab' && menuButton.getAttribute('aria-expanded') === 'true') {
+        const controls = [...header.querySelectorAll('a, button')].filter((element) => element.getClientRects().length);
+        const first = controls[0];
+        const last = controls[controls.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      }
     });
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 960) closeMenu();
+      if (desktopHeader.matches) closeMenu();
     });
   }
 
@@ -160,29 +197,6 @@
       event.preventDefault();
       setAccordionExpanded(item, !item.open);
     });
-  });
-
-  const reveals = document.querySelectorAll('.reveal');
-  if (motionPreference.matches || !('IntersectionObserver' in window)) {
-    reveals.forEach((element) => element.classList.add('is-visible'));
-  } else {
-    const observer = new IntersectionObserver((entries) => {
-      let serviceIndex = 0;
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        if (entry.target.matches('[data-service-item]')) {
-          entry.target.style.setProperty('--reveal-delay', `${Math.min(serviceIndex++, 6) * 70}ms`);
-        }
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px' });
-    reveals.forEach((element) => observer.observe(element));
-  }
-
-  motionPreference.addEventListener('change', () => {
-    if (!motionPreference.matches) return;
-    reveals.forEach((element) => element.classList.add('is-visible'));
   });
 
   const presenceMapElement = document.querySelector('[data-map-status]')?.closest('.presence-section')?.querySelector('#presence-map');

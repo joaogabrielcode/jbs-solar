@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="JBS Solar: projeto, instalação, monitoramento e suporte técnico para soluções em energia solar.">
   <meta name="theme-color" content="#052b4f">
-  <meta property="og:title" content="JBS Solar | Energia solar com acompanhamento de ponta a ponta">
-  <meta property="og:description" content="Soluções em energia solar com projeto personalizado, instalação e suporte técnico.">
+  <meta property="og:title" content="JBS Solar | Projeto, instalação e manutenção">
+  <meta property="og:description" content="Projeto, instalação, monitoramento e manutenção de sistemas fotovoltaicos.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="img/brand/logo-jbs-solar.png">
-  <title>JBS Solar | Energia que acompanha você</title>
+  <title>JBS Solar | Projeto, instalação e manutenção</title>
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" as="image" href="img/brand/painel-solar-image.png" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.12.0/dist/maplibre-gl.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=single-row-header-04">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Organization","name":"JBS Solar","logo":"img/brand/logo-jbs-solar.png"}
   </script>
@@ -24,41 +24,46 @@
 <body>
   <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 
-  <header class="site-header" data-header>
-    <div class="shell nav-shell">
-      <a class="brand" href="#inicio" aria-label="JBS Solar — início">
-        <img src="img/brand/logo-jbs-solar.png" alt="JBS Solar" width="1024" height="1024">
-      </a>
-      <nav id="menu-principal" class="main-nav" aria-label="Navegação principal" data-nav>
-        <a href="#presenca-rn">Presença no RN</a>
-        <a href="#empresa">Por que escolher a JBS?</a>
-        <a href="#video-institucional">Conheça a JBS Solar</a>
-        <a href="#solucoes">Serviços</a>
-        <a href="#orcamento">Orçamento</a>
-        <a href="#faq">FAQ</a>
-        <a href="#cta-final">Contato</a>
-        <a class="nav-instagram" href="https://www.instagram.com/jbssolar/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg><span>@jbssolar</span></a>
-      </nav>
-      <a class="header-instagram" href="https://www.instagram.com/jbssolar/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da JBS Solar"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg><span>@jbssolar</span></a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" data-menu-toggle>
-        <span class="menu-toggle__label">Menu</span>
-        <span class="menu-toggle__icon" aria-hidden="true"><i></i><i></i></span>
-      </button>
-    </div>
-  </header>
+  <div class="header-slot">
+    <header class="site-header" data-header>
+      <div class="shell nav-shell">
+        <a class="brand" href="#inicio" aria-label="JBS Solar: início">
+          <img src="img/brand/logo-jbs-solar.png" alt="JBS Solar" width="1024" height="1024">
+        </a>
+        <nav id="menu-principal" class="main-nav" aria-label="Navegação principal" data-nav>
+          <a href="#inicio" aria-current="location">Início</a>
+          <a href="#empresa">Sobre a JBS</a>
+          <a href="#solucoes">Serviços</a>
+          <a href="#orcamento">Orçamento</a>
+          <a href="#faq">FAQ</a>
+          <!-- Adicionar href com a URL pública da loja quando estiver disponível. -->
+          <a class="nav-store" role="link" aria-disabled="true" tabindex="0" aria-label="Loja JBS — em breve">Loja JBS <span class="nav-store-note">em breve</span></a>
+          <a class="nav-whatsapp" href="https://wa.me/558481479896" target="_blank" rel="noopener noreferrer" aria-label="Fale com a JBS Solar pelo WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.3-4.8A8.5 8.5 0 1 1 20.5 11.7Z"/><path d="m8 7 2 3-1 1c1 2 2 3 4 4l1-1 3 2c-1 2-3 2-5 1s-5-4-6-6 0-3 2-4Z"/></svg><span>WhatsApp</span></a>
+          <a class="nav-instagram" href="https://www.instagram.com/jbssolar/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg><span>Instagram</span></a>
+        </nav>
+        <div class="header-contacts">
+          <a class="header-instagram" href="https://www.instagram.com/jbssolar/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg><span>Instagram</span></a>
+          <a class="header-whatsapp" href="https://wa.me/558481479896" target="_blank" rel="noopener noreferrer" aria-label="Fale com a JBS Solar pelo WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.3-4.8A8.5 8.5 0 1 1 20.5 11.7Z"/><path d="m8 7 2 3-1 1c1 2 2 3 4 4l1-1 3 2c-1 2-3 2-5 1s-5-4-6-6 0-3 2-4Z"/></svg><span>WhatsApp</span></a>
+        </div>
+        <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal" data-menu-toggle>
+          <span class="menu-toggle__icon" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+      </div>
+    </header>
+  </div>
 
   <main id="conteudo">
     <section id="inicio" class="hero">
       <img class="hero-background" src="img/brand/painel-solar-image.png" alt="" width="1672" height="941" fetchpriority="high">
       <div class="shell hero-grid">
-        <div class="hero-copy reveal">
+        <div class="hero-copy">
           <div class="hero-message">
             <h1>Qualidade e segurança <em>em cada projeto.</em></h1>
             <p class="hero-lead">Projeto, instalação e suporte técnico com acompanhamento em todas as etapas.</p>
           </div>
           <div class="hero-actions">
             <a class="button button--sun" href="#orcamento">Solicite seu orçamento <span aria-hidden="true">↗</span></a>
-            <a class="hero-secondary" href="#solucoes"><span class="round-link" aria-hidden="true">↓</span><span>Nossas soluções</span></a>
+            <a class="hero-secondary" href="#solucoes"><span>Ver serviços</span></a>
           </div>
           <div class="hero-proof" aria-label="Números da JBS Solar">
             <ul class="hero-stats">
@@ -75,15 +80,14 @@
 
     <section id="presenca-rn" class="section section--mist presence-section" aria-labelledby="presenca-rn-titulo">
       <div class="shell">
-        <div class="section-heading presence-heading reveal">
+        <div class="section-heading presence-heading">
           <div>
-            <p class="eyebrow"><span></span> Presença no RN</p>
-            <h2 id="presenca-rn-titulo">Energia solar mais <em>perto de você.</em></h2>
+            <h2 id="presenca-rn-titulo">Unidades e atendimento <em>no RN.</em></h2>
           </div>
           <p>A JBS Solar possui unidades em diferentes regiões do Rio Grande do Norte e atua com projetos em diversas cidades.</p>
         </div>
 
-        <div class="presence-toolbar reveal" aria-label="Filtros do mapa">
+        <div class="presence-toolbar" aria-label="Filtros do mapa">
           <span class="presence-toolbar__label">Visualizar</span>
           <div class="presence-filters" role="group" aria-label="Filtrar pontos no mapa">
             <button class="presence-filter is-active" type="button" data-map-filter="todos" aria-pressed="true">Todas</button>
@@ -94,11 +98,11 @@
         </div>
 
         <div class="presence-layout">
-          <div class="presence-map-wrap reveal">
+          <div class="presence-map-wrap">
             <div id="presence-map" class="presence-map" aria-label="Mapa da presença da JBS Solar no Rio Grande do Norte"></div>
           </div>
 
-          <aside class="presence-info reveal" aria-label="Unidades e cidades atendidas">
+          <aside class="presence-info" aria-label="Unidades e cidades atendidas">
             <div class="presence-info-block">
               <div class="presence-info-heading"><span class="presence-legend presence-legend--branch" aria-hidden="true"></span><h3>Filiais</h3></div>
               <ul class="presence-city-list" data-location-list="filiais"></ul>
@@ -114,38 +118,33 @@
 
     <section id="empresa" class="section section--paper differentiators" aria-labelledby="diferenciais-titulo">
       <div class="shell">
-        <div class="differentiators-heading reveal">
+        <div class="differentiators-heading">
           <div>
-            <h2 id="diferenciais-titulo">Por que escolher a JBS?</h2>
-            <p class="differentiators-subtitle">Estrutura própria. Suporte em todas as etapas.</p>
+            <h2 id="diferenciais-titulo">Estrutura da JBS Solar</h2>
           </div>
-          <p>Mais do que instalar, a JBS acompanha o desempenho, a manutenção e o suporte do sistema ao longo da operação.</p>
+          <p>A JBS acompanha o desempenho, a manutenção e o suporte do sistema durante a operação.</p>
         </div>
 
         <div class="differential-list">
-          <article class="differential-pillar reveal">
-            <div class="differential-pillar-heading"><span class="differential-icon differential-icon--structure" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M5 27h22M8 24V13h16v11M5 13l11-8 11 8M12 24v-5h8v5"/></svg></span><span class="differential-number">01</span></div>
+          <article class="differential-pillar">
             <h3>Estrutura própria</h3>
             <p>Estrutura técnica própria para acompanhar o projeto com mais controle e proximidade.</p>
             <ul><li>Escritório físico</li><li>Equipe de instalação própria</li><li>Laboratório de ensaios elétricos</li></ul>
           </article>
 
-          <article class="differential-pillar reveal">
-            <div class="differential-pillar-heading"><span class="differential-icon differential-icon--documentation" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M8 5h12l4 4v18H8zM20 5v5h4M12 15h8M12 20h8"/></svg></span><span class="differential-number">02</span></div>
+          <article class="differential-pillar">
             <h3>Projeto e documentação</h3>
             <p>Cada projeto é estruturado com documentação e acompanhamento adequados à necessidade do cliente.</p>
             <ul><li>Documentação personalizada</li><li>Projeto elétrico personalizado</li><li>Contrato de prestação de serviço</li><li>Integração ao cliente</li></ul>
           </article>
 
-          <article class="differential-pillar reveal">
-            <div class="differential-pillar-heading"><span class="differential-icon differential-icon--monitoring" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M5 7h22v16H5zM11 27h10M16 23v4M9 18l4-4 3 2 6-7"/></svg></span><span class="differential-number">03</span></div>
+          <article class="differential-pillar">
             <h3>Monitoramento e manutenção</h3>
             <p>Acompanhamento contínuo para identificar falhas, analisar desempenho e manter a operação da usina.</p>
             <ul><li>Central de monitoramento</li><li>Monitoramento diário da usina</li><li>Análise de geração e eficiência da usina</li><li>Manutenção preventiva</li><li>Manutenção corretiva</li><li>Relatório de geração e consumo</li><li>Equipamentos de backup para geração</li></ul>
           </article>
 
-          <article class="differential-pillar reveal">
-            <div class="differential-pillar-heading"><span class="differential-icon differential-icon--support" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M16 27a11 11 0 1 0-11-11v5h5v-7H6M26 21h-5v-7h5M10 27h12"/></svg></span><span class="differential-number">04</span></div>
+          <article class="differential-pillar">
             <h3>Suporte técnico e pós-venda</h3>
             <p>Suporte técnico para acompanhar ocorrências, substituições e processos de garantia relacionados ao sistema.</p>
             <ul><li>Problemas de vazamento</li><li>Problemas por vibrações</li><li>Substituição de módulos</li><li>Substituição de inversores</li><li>Substituição de disjuntores</li><li>Ativação do monitoramento remoto</li><li>Processo de garantia com fabricante</li><li>Garantia de geração</li><li>Folga nas conexões elétricas</li><li>Troca de equipamentos para garantia</li></ul>
@@ -157,11 +156,10 @@
 
     <section id="video-institucional" class="section section--mist institutional-video" aria-labelledby="video-institucional-titulo">
       <div class="shell">
-        <div class="video-heading reveal">
-          <p class="eyebrow"><span></span> Conheça a JBS Solar</p>
-          <h2 id="video-institucional-titulo">Veja de perto quem está por trás de cada projeto.</h2>
+        <div class="video-heading">
+          <h2 id="video-institucional-titulo">Conheça a JBS Solar</h2>
         </div>
-        <div class="video-frame reveal">
+        <div class="video-frame">
           <video controls playsinline preload="metadata" width="1280" height="720">
             <source src="img/brand/video.mp4" type="video/mp4">
             Seu navegador não suporta a reprodução de vídeo.
@@ -172,36 +170,36 @@
 
     <section id="solucoes" class="section section--mist services" aria-labelledby="servicos-titulo">
       <div class="shell">
-        <div class="section-heading reveal"><div><p class="eyebrow"><span></span> Serviços</p><h2 id="servicos-titulo">Conheça nossos <em>serviços.</em></h2></div><p>Veja as opções da JBS Solar e consulte os detalhes de cada serviço.</p></div>
+        <div class="section-heading"><div><h2 id="servicos-titulo">Serviços da <em>JBS Solar.</em></h2></div><p>Veja as opções da JBS Solar e consulte os detalhes de cada serviço.</p></div>
         <!-- Fonte factual: docs/jbs-servicos-base.md. Não ampliar condições ou preencher lacunas. -->
         <div class="service-list" data-service-list>
-          <article id="servico-manutencao" class="service-item reveal" data-service-item>
+          <article id="servico-manutencao" class="service-item" data-service-item>
             <div class="service-card-head">
-              <div class="service-card-top"><span class="service-number" aria-hidden="true">01</span><span class="service-card-icon" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M6 25h20M9 25V12h14v13M6 12l10-7 10 7M12 25v-6h8v6"/></svg></span></div>
+              <div class="service-card-top"><span class="service-number" aria-hidden="true">01</span></div>
               <h3 class="service-title" id="titulo-servico-manutencao">Manutenção</h3>
               <p class="service-description">Manutenção preventiva e corretiva, com ativação do monitoramento e relatório de geração e eficiência.</p>
               <button class="service-action" type="button" data-service-open aria-controls="service-dialog-content">Ver detalhes <span aria-hidden="true">↗</span></button>
             </div>
             <div id="conteudo-servico-manutencao" class="service-content">
-              <p>Manutenção preventiva e corretiva, com ativação do monitoramento da usina. O serviço inclui um relatório detalhado sobre a análise de geração e eficiência.</p><h4>Benefícios</h4><ul><li>Aumento da eficiência na geração.</li><li>Prolongamento da vida útil dos equipamentos.</li><li>Prevenção dos riscos de acidentes.</li></ul><h4>O que está incluso</h4><ul><li>Limpeza e reaperto dos módulos fotovoltaicos.</li><li>Limpeza e reaperto dos inversores.</li><li>Limpeza e reaperto dos quadros QDCA e QDCC.</li><li>Inspeção termográfica.</li><li>Inspeção das proteções elétricas.</li><li>Relatório de manutenção.</li></ul><h4>Suporte — 3 meses</h4><p>O material da JBS apresenta os seguintes itens de suporte:</p><ul><li>Vazamento.</li><li>Vibrações.</li><li>Ponto quente nas conexões elétricas.</li><li>Ativação do monitoramento.</li></ul><h4>Como o valor é calculado?</h4><p>O valor do serviço de manutenção é calculado com base na potência do sistema.</p>
+              <p>Manutenção preventiva e corretiva, com ativação do monitoramento da usina. O serviço inclui um relatório detalhado sobre a análise de geração e eficiência.</p><h4>Benefícios</h4><ul><li>Aumento da eficiência na geração.</li><li>Prolongamento da vida útil dos equipamentos.</li><li>Prevenção dos riscos de acidentes.</li></ul><h4>O que está incluso</h4><ul><li>Limpeza e reaperto dos módulos fotovoltaicos.</li><li>Limpeza e reaperto dos inversores.</li><li>Limpeza e reaperto dos quadros QDCA e QDCC.</li><li>Inspeção termográfica.</li><li>Inspeção das proteções elétricas.</li><li>Relatório de manutenção.</li></ul><h4>Suporte: 3 meses</h4><p>O material da JBS apresenta os seguintes itens de suporte:</p><ul><li>Vazamento.</li><li>Vibrações.</li><li>Ponto quente nas conexões elétricas.</li><li>Ativação do monitoramento.</li></ul><h4>Como o valor é calculado?</h4><p>O valor do serviço de manutenção é calculado com base na potência do sistema.</p>
               <a class="button button--blue" href="#orcamento">Solicitar orçamento <span aria-hidden="true">↗</span></a>
             </div>
           </article>
-          <article id="servico-monitoramento" class="service-item reveal" data-service-item>
+          <article id="servico-monitoramento" class="service-item" data-service-item>
             <div class="service-card-head">
-              <div class="service-card-top"><span class="service-number" aria-hidden="true">02</span><span class="service-card-icon" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M5 7h22v16H5zM11 27h10M16 23v4M9 18l4-4 3 2 6-7"/></svg></span></div>
+              <div class="service-card-top"><span class="service-number" aria-hidden="true">02</span></div>
               <h3 class="service-title" id="titulo-servico-monitoramento">Monitoramento de usina solar</h3>
               <p class="service-description">Monitoramento diário, notificação de alarmes e análise de consumo, geração e eficiência.</p>
               <button class="service-action" type="button" data-service-open aria-controls="service-dialog-content">Ver detalhes <span aria-hidden="true">↗</span></button>
             </div>
             <div id="conteudo-servico-monitoramento" class="service-content">
-              <p>Acompanhe a usina com monitoramento diário e informações sobre consumo, geração e eficiência.</p><h4>O serviço inclui</h4><ul><li>Monitoramento diário da usina.</li><li>Notificação de alarmes.</li><li>Análise de consumo e geração.</li><li>Relatório de eficiência da usina.</li><li>Relatório de geração e consumo — Cosern.</li></ul><h4>Como o valor é calculado?</h4><p>O valor do serviço de monitoramento é calculado com base na quantidade de unidades consumidoras.</p>
+              <p>Acompanhe a usina com monitoramento diário e informações sobre consumo, geração e eficiência.</p><h4>O serviço inclui</h4><ul><li>Monitoramento diário da usina.</li><li>Notificação de alarmes.</li><li>Análise de consumo e geração.</li><li>Relatório de eficiência da usina.</li><li>Relatório de geração e consumo: Cosern.</li></ul><h4>Como o valor é calculado?</h4><p>O valor do serviço de monitoramento é calculado com base na quantidade de unidades consumidoras.</p>
               <a class="button button--blue" href="#orcamento">Solicitar orçamento <span aria-hidden="true">↗</span></a>
             </div>
           </article>
-          <article id="servico-investimento" class="service-item reveal" data-service-item>
+          <article id="servico-investimento" class="service-item" data-service-item>
             <div class="service-card-head">
-              <div class="service-card-top"><span class="service-number" aria-hidden="true">03</span><span class="service-card-icon" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M16 5v22M5 16h22M7 9h18M7 23h18"/></svg></span></div>
+              <div class="service-card-top"><span class="service-number" aria-hidden="true">03</span></div>
               <h3 class="service-title" id="titulo-servico-investimento">Usina Solar de Investimento</h3>
               <p class="service-description">Implantação de usina solar para comercialização de energia, com renda proporcional à geração.</p>
               <button class="service-action" type="button" data-service-open aria-controls="service-dialog-content">Ver detalhes <span aria-hidden="true">↗</span></button>
@@ -211,9 +209,9 @@
               <a class="button button--blue" href="#orcamento">Solicitar orçamento <span aria-hidden="true">↗</span></a>
             </div>
           </article>
-          <article id="servico-assinatura" class="service-item reveal" data-service-item>
+          <article id="servico-assinatura" class="service-item" data-service-item>
             <div class="service-card-head">
-              <div class="service-card-top"><span class="service-number" aria-hidden="true">04</span><span class="service-card-icon" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M16 4v24M8 9h13a5 5 0 0 1 0 10H11a5 5 0 0 0 0 10h13"/></svg></span></div>
+              <div class="service-card-top"><span class="service-number" aria-hidden="true">04</span></div>
               <h3 class="service-title" id="titulo-servico-assinatura">Energia Solar por Assinatura</h3>
               <p class="service-description">Economia de até 30%, com investimento zero e sem gastos com construção, instalação e manutenção de uma usina.</p>
               <button class="service-action" type="button" data-service-open aria-controls="service-dialog-content">Ver detalhes <span aria-hidden="true">↗</span></button>
@@ -223,9 +221,9 @@
               <a class="button button--blue" href="#orcamento">Solicitar orçamento <span aria-hidden="true">↗</span></a>
             </div>
           </article>
-          <article id="servico-carregador" class="service-item reveal" data-service-item>
+          <article id="servico-carregador" class="service-item" data-service-item>
             <div class="service-card-head">
-              <div class="service-card-top"><span class="service-number" aria-hidden="true">05</span><span class="service-card-icon" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M18 4 8 18h8l-2 10 10-14h-8z"/></svg></span></div>
+              <div class="service-card-top"><span class="service-number" aria-hidden="true">05</span></div>
               <h3 class="service-title" id="titulo-servico-carregador">Carregador de carro elétrico</h3>
               <p class="service-description">Instalação de soluções para recarga de veículos elétricos, com opção de utilizar equipamentos do cliente ou contratar a solução completa.</p>
               <button class="service-action" type="button" data-service-open aria-controls="service-dialog-content">Ver detalhes <span aria-hidden="true">↗</span></button>
@@ -235,9 +233,9 @@
               <a class="button button--blue" href="https://wa.me/558481479896?text=Ol%C3%A1%2C%20JBS%20Solar%21%20Gostaria%20de%20solicitar%20uma%20avalia%C3%A7%C3%A3o%20para%20carregador%20veicular." target="_blank" rel="noopener noreferrer">Solicitar avaliação para carregador veicular <span aria-hidden="true">↗</span></a>
             </div>
           </article>
-          <article id="servico-bombeamento" class="service-item reveal" data-service-item data-service-modal-title="Sistema de bombeamento solar">
+          <article id="servico-bombeamento" class="service-item" data-service-item data-service-modal-title="Sistema de bombeamento solar">
             <div class="service-card-head">
-              <div class="service-card-top"><span class="service-number" aria-hidden="true">06</span><span class="service-card-icon" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M16 27V8M10 14l6-6 6 6M8 27h16"/></svg></span></div>
+              <div class="service-card-top"><span class="service-number" aria-hidden="true">06</span></div>
               <h3 class="service-title" id="titulo-servico-bombeamento">Sistema de bombeamento</h3>
               <p class="service-description">Instalação de sistemas de bombeamento com energia solar, utilizando equipamentos do cliente ou uma solução completa fornecida pela JBS.</p>
               <button class="service-action" type="button" data-service-open aria-controls="service-dialog-content">Ver detalhes <span aria-hidden="true">↗</span></button>
@@ -247,9 +245,9 @@
               <a class="button button--blue" href="https://wa.me/558481479896?text=Ol%C3%A1%2C%20JBS%20Solar%21%20Gostaria%20de%20solicitar%20uma%20avalia%C3%A7%C3%A3o%20para%20bombeamento%20solar." target="_blank" rel="noopener noreferrer">Solicitar avaliação para bombeamento solar <span aria-hidden="true">↗</span></a>
             </div>
           </article>
-          <article id="servico-cosern" class="service-item reveal" data-service-item>
+          <article id="servico-cosern" class="service-item" data-service-item>
             <div class="service-card-head">
-              <div class="service-card-top"><span class="service-number" aria-hidden="true">07</span><span class="service-card-icon" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M7 6h18v20H7zM11 11h10M11 16h10M11 21h6"/></svg></span></div>
+              <div class="service-card-top"><span class="service-number" aria-hidden="true">07</span></div>
               <h3 class="service-title" id="titulo-servico-cosern">Solicitações Cosern</h3>
               <p class="service-description">Solicitações de titularidade, rateio de créditos, faturas, ligação e outros atendimentos listados pela JBS.</p>
               <button class="service-action" type="button" data-service-open aria-controls="service-dialog-content">Ver detalhes <span aria-hidden="true">↗</span></button>
@@ -273,13 +271,12 @@
     </section>
 
     <section id="orcamento" class="section contact-section" aria-labelledby="orcamento-titulo">
-      <div class="contact-sun" aria-hidden="true"></div>
       <div class="shell contact-grid">
-        <div class="contact-copy reveal"><p class="eyebrow eyebrow--light"><span></span> Solicitação de orçamento</p><h2 id="orcamento-titulo">Solicite seu <em>orçamento.</em></h2><p id="orcamento-status">Preencha os dados e nossa equipe receberá sua solicitação pelo WhatsApp.</p><ul class="quote-benefits" aria-label="Benefícios do atendimento"><li><span aria-hidden="true">↗</span>Resposta pelo WhatsApp</li><li><span aria-hidden="true">✓</span>Orçamento sem compromisso</li><li><span aria-hidden="true">✦</span>Atendimento da equipe JBS</li></ul></div>
-        <form class="quote-form reveal" aria-label="Solicitação de orçamento" aria-describedby="orcamento-status" data-quote-form>
+        <div class="contact-copy"><h2 id="orcamento-titulo">Solicite seu <em>orçamento.</em></h2><p id="orcamento-status">Preencha os dados para abrir uma mensagem no WhatsApp. Confira as informações e envie para a JBS.</p></div>
+        <form class="quote-form" aria-label="Solicitação de orçamento" aria-describedby="orcamento-status" data-quote-form>
           <fieldset class="quote-group">
             <legend>Sobre você</legend>
-            <label><span>Nome completo *</span><input name="name" autocomplete="name" required placeholder="Como podemos chamar você?"></label>
+            <label><span>Nome completo *</span><input name="name" autocomplete="name" required placeholder="Nome completo"></label>
             <label><span>WhatsApp *</span><input name="whatsapp" type="tel" autocomplete="tel" required placeholder="(84) 99999-9999"></label>
             <label><span>Cidade *</span><input name="city" autocomplete="address-level2" required placeholder="Sua cidade"></label>
             <div class="quote-field"><span class="quote-label">Tipo de cliente *</span><div class="choice-chips" role="radiogroup" aria-label="Tipo de cliente"><label class="choice-chip"><input type="radio" name="clientType" value="Residencial" required><span>Residencial</span></label><label class="choice-chip"><input type="radio" name="clientType" value="Comercial"><span>Comercial</span></label><label class="choice-chip"><input type="radio" name="clientType" value="Rural"><span>Rural</span></label><label class="choice-chip"><input type="radio" name="clientType" value="Investimento"><span>Investimento</span></label><label class="choice-chip"><input type="radio" name="clientType" value="Outro"><span>Outro</span></label></div></div>
@@ -291,7 +288,7 @@
           </fieldset>
           <fieldset class="quote-group quote-group--note">
             <legend>Observação <small>opcional</small></legend>
-            <label class="field-wide"><span>Mensagem / observação</span><textarea name="message" rows="3" placeholder="Conte algo que possa ajudar no atendimento"></textarea></label>
+            <label class="field-wide"><span>Mensagem / observação</span><textarea name="message" rows="3" placeholder="Descreva o serviço ou a dúvida"></textarea></label>
           </fieldset>
           <button class="button button--sun" type="submit">Solicitar orçamento <span aria-hidden="true">↗</span></button>
           <p class="form-feedback" data-form-feedback role="status" aria-live="polite"></p>
@@ -299,14 +296,13 @@
       </div>
     </section>
 
-    <section id="faq" class="section section--paper faq"><div class="shell faq-grid"><div class="faq-heading reveal"><p class="eyebrow"><span></span> Perguntas frequentes</p><h2>Informação para decidir com <em>segurança.</em></h2><p>Confira as dúvidas mais comuns. A solicitação de orçamento estará disponível em breve.</p><a class="button button--outline" href="#orcamento">Fazer uma pergunta <span aria-hidden="true">↗</span></a></div><div class="accordion reveal"><details open><summary><span>Como funciona o primeiro contato?</span><i aria-hidden="true"></i></summary><p>O espaço para solicitar orçamento está em preparação. Quando estiver disponível, você poderá compartilhar seu cenário para iniciar o atendimento.</p></details><details><summary><span>O que preciso informar para começar?</span><i aria-hidden="true"></i></summary><p>Informações sobre consumo, endereço e perfil do imóvel ajudam a iniciar a análise do projeto.</p></details><details><summary><span>A JBS Solar oferece suporte depois da instalação?</span><i aria-hidden="true"></i></summary><p>A JBS Solar apresenta soluções de monitoramento, manutenção e suporte técnico após a entrega.</p></details><details><summary><span>Como confirmo o atendimento na minha região?</span><i aria-hidden="true"></i></summary><p>Envie seu endereço no primeiro contato para que a equipe confirme a disponibilidade de atendimento.</p></details></div></div></section>
+    <section id="faq" class="section section--paper faq"><div class="shell faq-grid"><div class="faq-heading"><h2>Perguntas frequentes</h2><p>Saiba como entrar em contato e quais informações ajudam no atendimento.</p><a class="button button--outline" href="#orcamento">Solicitar orçamento <span aria-hidden="true">↗</span></a></div><div class="accordion"><details open><summary><span>Como funciona o primeiro contato?</span><i aria-hidden="true"></i></summary><p>Preencha o formulário de orçamento para abrir uma mensagem no WhatsApp. Depois de conferir os dados, envie a mensagem para iniciar o atendimento.</p></details><details><summary><span>O que preciso informar para começar?</span><i aria-hidden="true"></i></summary><p>Informações sobre consumo, endereço e perfil do imóvel ajudam a iniciar a análise do projeto.</p></details><details><summary><span>A JBS Solar oferece suporte depois da instalação?</span><i aria-hidden="true"></i></summary><p>A JBS Solar apresenta soluções de monitoramento, manutenção e suporte técnico após a entrega.</p></details><details><summary><span>Como confirmo o atendimento na minha região?</span><i aria-hidden="true"></i></summary><p>Envie seu endereço no primeiro contato para que a equipe confirme a disponibilidade de atendimento.</p></details></div></div></section>
 
     <section id="cta-final" class="section final-contact" aria-labelledby="cta-final-titulo">
       <div class="shell final-contact__shell">
-        <div class="final-contact__content reveal">
-          <p class="eyebrow eyebrow--light"><span></span> Ainda ficou com alguma dúvida?</p>
+        <div class="final-contact__content">
           <h2 id="cta-final-titulo">Fale com a equipe da <em>JBS Solar.</em></h2>
-          <p>Se você ainda quer entender qual solução faz mais sentido para o seu caso, fale diretamente com nossa equipe pelo WhatsApp.</p>
+          <p>Consulte os serviços e confirme o atendimento na sua cidade pelo WhatsApp.</p>
           <div class="final-contact__actions">
             <a class="button button--sun" href="https://wa.me/558481479896?text=Ol%C3%A1%21%20Estive%20no%20site%20da%20JBS%20Solar%20e%20fiquei%20com%20algumas%20d%C3%BAvidas.%20Gostaria%20de%20falar%20com%20a%20equipe." target="_blank" rel="noopener noreferrer">Conversar pelo WhatsApp <span aria-hidden="true">↗</span></a>
             <a class="instagram-link" href="https://www.instagram.com/jbssolar/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg><span>Ver no Instagram</span></a>
@@ -317,8 +313,8 @@
   </main>
 
 
-  <footer class="site-footer"><div class="shell footer-grid"><div class="footer-brand"><a class="brand brand--footer" href="#inicio" aria-label="JBS Solar — início"><img src="img/brand/logo-jbs-solar.png" alt="JBS Solar" width="1024" height="1024"></a><p>Energia solar com projeto, instalação e suporte técnico.</p></div><div class="footer-nav"><p class="footer-label">Navegação</p><a href="#empresa">Por que escolher a JBS?</a><a href="#solucoes">Serviços</a><a href="#orcamento">Orçamento</a><a href="#faq">FAQ</a></div><div class="footer-nav"><p class="footer-label">Serviços</p><a href="#servico-manutencao">Manutenção</a><a href="#servico-monitoramento">Monitoramento de usina solar</a><a href="#servico-investimento">Usina Solar de Investimento</a><a href="#servico-assinatura">Energia Solar por Assinatura</a></div><div class="footer-action"><p class="footer-label">Contato</p><p>Confirme o atendimento para a sua região.</p><div class="footer-contact-links"><a class="footer-contact-link" href="https://wa.me/558481479896?text=Ol%C3%A1%21%20Estive%20no%20site%20da%20JBS%20Solar%20e%20fiquei%20com%20algumas%20d%C3%BAvidas.%20Gostaria%20de%20falar%20com%20a%20equipe." target="_blank" rel="noopener noreferrer">WhatsApp <span aria-hidden="true">↗</span></a><a class="footer-instagram" href="https://www.instagram.com/jbssolar/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg><span>@jbssolar</span></a></div></div></div><div class="shell footer-bottom"><span>© <span data-year></span> JBS Solar</span><span>Qualidade • Energia • Segurança</span></div></footer>
+  <footer class="site-footer"><div class="shell footer-grid"><div class="footer-brand"><a class="brand brand--footer" href="#inicio" aria-label="JBS Solar: início"><img src="img/brand/logo-jbs-solar.png" alt="JBS Solar" width="1024" height="1024"></a><p>Energia solar com projeto, instalação e suporte técnico.</p></div><div class="footer-nav"><p class="footer-label">Navegação</p><a href="#empresa">Empresa</a><a href="#solucoes">Serviços</a><a href="#orcamento">Orçamento</a><a href="#faq">FAQ</a></div><div class="footer-nav"><p class="footer-label">Serviços</p><a href="#servico-manutencao">Manutenção</a><a href="#servico-monitoramento">Monitoramento de usina solar</a><a href="#servico-investimento">Usina Solar de Investimento</a><a href="#servico-assinatura">Energia Solar por Assinatura</a></div><div class="footer-action"><p class="footer-label">Contato</p><p>Confirme o atendimento para a sua região.</p><div class="footer-contact-links"><a class="footer-contact-link" href="https://wa.me/558481479896?text=Ol%C3%A1%21%20Estive%20no%20site%20da%20JBS%20Solar%20e%20fiquei%20com%20algumas%20d%C3%BAvidas.%20Gostaria%20de%20falar%20com%20a%20equipe." target="_blank" rel="noopener noreferrer">WhatsApp <span aria-hidden="true">↗</span></a><a class="footer-instagram" href="https://www.instagram.com/jbssolar/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg><span>@jbssolar</span></a></div></div></div><div class="shell footer-bottom"><span>© <span data-year></span> JBS Solar</span><span>Projeto, instalação e manutenção.</span></div></footer>
   <script src="https://unpkg.com/maplibre-gl@5.12.0/dist/maplibre-gl.js" defer></script>
-  <script src="js/main.js" defer></script>
+  <script src="js/main.js?v=single-row-header-04" defer></script>
 </body>
 </html>
