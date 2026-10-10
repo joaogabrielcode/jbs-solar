@@ -211,8 +211,10 @@
     { name: 'Ipanguaçu', type: 'projeto', lat: -5.498, lng: -36.855, hasProjects: true, address: '', mapsUrl: '' },
     { name: 'Assú', type: 'projeto', lat: -5.577, lng: -36.915, hasProjects: true, address: '', mapsUrl: '' },
     { name: 'Itajá', type: 'projeto', lat: -5.638, lng: -36.871, hasProjects: true, address: '', mapsUrl: '' },
-    { name: 'Diogo Lopes', type: 'projeto', lat: -5.087, lng: -36.393, hasProjects: true, address: '', mapsUrl: '' },
-    { name: 'São Miguel do Gostoso', type: 'filial', lat: -5.946, lng: -35.576, hasProjects: true, address: '', mapsUrl: '' },
+    // Centro da localidade: https://www.openstreetmap.org/node/416654197
+    { name: 'Diogo Lopes', type: 'projeto', lat: -5.082597, lng: -36.463045, hasProjects: true, address: '', mapsUrl: '' },
+    // Sede municipal (5°07′30″S, 35°38′20″O): https://www.site.saomigueldogostoso.rn.gov.br/pages/localizacao
+    { name: 'São Miguel do Gostoso', type: 'filial', lat: -5.125, lng: -35.638889, hasProjects: true, address: '', mapsUrl: '' },
   ];
 
   const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (character) => ({
